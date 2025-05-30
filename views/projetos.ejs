@@ -1,0 +1,48 @@
+<%- include('partials/header', { pageTitle: pageTitle, dados: dados }) %>
+
+<section id="todos-projetos" class="py-12">
+    <h1 class="text-4xl font-bold text-center text-gray-100 mb-12">Meus Projetos</h1>
+    
+    <% if (dados.projetos && dados.projetos.length > 0) { %>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <% dados.projetos.forEach(projeto => { %>
+                <div class="bg-slate-800 rounded-xl shadow-xl overflow-hidden hover:shadow-indigo-500/40 transition-shadow duration-300 flex flex-col">
+                    <img src="<%= projeto.imagemUrl %>" alt="Imagem do Projeto <%= projeto.nome %>" class="w-full h-56 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2 class="text-2xl font-semibold text-sky-400 mb-3"><%= projeto.nome %></h2>
+                        <p class="text-gray-300 text-sm mb-3 flex-grow"><%= projeto.descricao %></p>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-200 mb-1">Tecnologias:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <% projeto.tecnologiasUtilizadas.forEach(tec => { %>
+                                    <span class="bg-sky-700 bg-opacity-40 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full"><%= tec %></span>
+                                <% }) %>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-700">
+                            <a href="/projetos/<%= projeto.id %>" class="inline-block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 mb-2">
+                                Ver Detalhes
+                            </a>
+                            <% if (projeto.linkRepositorio && projeto.linkRepositorio !== '#') { %>
+                                <a href="<%= projeto.linkRepositorio %>" target="_blank" rel="noopener noreferrer" class="inline-block w-full text-center bg-slate-600 hover:bg-slate-500 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                                    Repositório no GitHub
+                                </a>
+                            <% } %>
+                            <% if (projeto.linkDemo && projeto.linkDemo !== '#') { %>
+                                <a href="<%= projeto.linkDemo %>" target="_blank" rel="noopener noreferrer" class="inline-block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 mt-2">
+                                    Ver Demo
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p class="text-center text-gray-400 text-lg">Nenhum projeto cadastrado no momento. Volte em breve!</p>
+    <% } %>
+</section>
+
+<%- include('partials/footer', { dados: dados }) %>

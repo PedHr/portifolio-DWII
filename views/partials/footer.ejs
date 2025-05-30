@@ -1,0 +1,45 @@
+</main>
+<footer id="contato" class="bg-gray-800 text-gray-300 py-12 mt-12">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl font-semibold mb-6"><%= dados.contato.titulo %></h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h3 class="text-lg font-medium text-blue-400 mb-2">Email</h3>
+                <a href="mailto:<%= dados.contato.email %>" class="hover:text-blue-300 transition duration-300"><%= dados.contato.email %></a>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-blue-400 mb-2">LinkedIn</h3>
+                <a href="<%= dados.contato.linkedin %>" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition duration-300">Visite meu perfil</a>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-blue-400 mb-2">GitHub</h3>
+                <a href="<%= dados.contato.github %>" target="_blank" rel="noopener noreferrer" class="hover:text-blue-300 transition duration-300">Veja meus repositórios</a>
+            </div>
+        </div>
+         <% if (dados.contato.telefone) { %>
+            <p class="mb-2">
+                <strong class="text-blue-400">Telefone:</strong> <%= dados.contato.telefone %>
+            </p>
+        <% } %>
+        <p class="text-sm mt-8">&copy; <%= new Date().getFullYear() %> <%= dados.geral.nomeCompleto %>. Todos os direitos reservados.</p>
+        <p class="text-xs mt-2">Desenvolvido com Node.js, Express & EJS.</p>
+    </div>
+</footer>
+<script src="https://cdn.tailwindcss.com"></script>
+ <script>
+    // Configuração do Tailwind CSS (opcional, para customizações)
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            // Você pode adicionar cores customizadas aqui
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

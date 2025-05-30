@@ -1,0 +1,79 @@
+/* Este arquivo é intencionalmente mínimo porque estamos usando Tailwind CSS via CDN.
+   Você pode adicionar CSS customizado aqui se precisar de algo que o Tailwind não cubra
+   ou se preferir não usar classes utilitárias para tudo. */
+
+/* Exemplo de estilo global que pode ser útil */
+body {
+    /* font-family: 'Poppins', sans-serif; /* Definido no script do Tailwind no footer */
+    /* background-color: #f4f7f6; /* Cinza claro como fundo */
+    /* color: #333; /* Cor de texto principal */
+    line-height: 1.6;
+}
+
+/* Estilos para os links de navegação ativos (exemplo, Tailwind já faz isso)
+nav ul li a.active {
+    font-weight: bold;
+    color: #your-active-color;
+}
+*/
+
+/* Você pode adicionar estilos para classes específicas que você criar nos seus arquivos EJS.
+.custom-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+*/
+
+/* Animações sutis para hover em cards (Tailwind já oferece utilities para isso)
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+*/
+
+/* Garanta que as imagens dos projetos não quebrem o layout */
+.project-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilizando a barra de rolagem (opcional, e pode não funcionar em todos os navegadores) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Adicione um placeholder para a imagem de perfil caso ela não carregue */
+img[alt^="Foto de"] {
+    background-color: #e0e0e0; /* Cor de fundo para o placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #757575;
+}
+
+img[alt^="Foto de"]:after {
+    content: attr(alt); /* Mostra o texto do alt */
+    font-size: 0.8rem;
+    padding: 10px;
+}
+
+/* Se você criar uma pasta public/images e colocar uma imagem placeholder-profile.png lá,
+   ela será usada. Caso contrário, o estilo acima tentará simular um placeholder. */
+
