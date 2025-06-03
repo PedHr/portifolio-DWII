@@ -36,14 +36,11 @@ const dadosPortfolio = {
     habilidades: {
         titulo: "Minhas Competências",
         tecnicas: [
-            { nome: "JavaScript", nivel: "Intermediário" },
-            { nome: "Node.js & Express", nivel: "Intermediário" },
-            { nome: "React & Next.js", nivel: "Intermediário" },
-            { nome: "Python", nivel: "Avançado" },
-            { nome: "HTML5 & CSS3", nivel: "Avançado" },
-            { nome: "SQL & NoSQL (MongoDB)", nivel: "Intermediário" },
-            { nome: "Git & GitHub", nivel: "Avançado" },
-            { nome: "Docker", nivel: "Básico" }
+            { nome: 'Python', nivel: 'Avançado', percentual: 90 },
+            { nome: 'PyQT5', nivel: 'Avançado', percentual: 75 },
+            { nome: 'HTML5 & CSS3', nivel: 'Avançado', percentual: 95 },
+            { nome: 'Banco de Dados (SQL & NoSQL)', nivel: 'Intermediário', percentual: 70 },
+            { nome: 'React & Next.js', nivel: 'Intermediário', percentual: 80 }
         ],
         softSkills: ["Comunicação Efetiva", "Trabalho em Equipe", "Resolução de Problemas", "Pensamento Crítico", "Adaptabilidade", "Proatividade"]
     },
@@ -57,7 +54,6 @@ const dadosPortfolio = {
 };
 
 app.get('/', (req, res) => {
-    // Renderiza 'index.ejs' e passa os dados para o template
     res.render('index', {
         pageTitle: `${dadosPortfolio.geral.nomeCompleto} | ${dadosPortfolio.geral.tituloPortfolio}`,
         dados: dadosPortfolio
@@ -65,7 +61,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/projetos', (req, res) => {
-    // Renderiza 'projetos.ejs' e passa os dados para o template
     res.render('projetos', {
         pageTitle: `Projetos | ${dadosPortfolio.geral.nomeCompleto}`,
         dados: dadosPortfolio
@@ -77,7 +72,7 @@ app.get('/projetos/:id', (req, res) => {
     const projeto = dadosPortfolio.projetos.find(p => p.id === projetoId);
 
     if (projeto) {
-        res.render('projeto-detalhe', { // Você precisará criar este arquivo EJS: views/projeto-detalhe.ejs
+        res.render('projeto-detalhe', {
             pageTitle: `${projeto.nome} | ${dadosPortfolio.geral.nomeCompleto}`,
             projeto: projeto,
             dados: dadosPortfolio
@@ -86,8 +81,6 @@ app.get('/projetos/:id', (req, res) => {
         res.status(404).send('Projeto não encontrado');
     }
 });
-
-
 
 app.listen(port, () => {
     console.log(`Servidor do portfólio rodando em http://localhost:${port}`);
