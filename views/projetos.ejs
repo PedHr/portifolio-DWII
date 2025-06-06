@@ -1,48 +1,82 @@
 <%- include('partials/header', { pageTitle: pageTitle, dados: dados }) %>
-
-<section id="todos-projetos" class="py-12">
-    <h1 class="text-4xl font-bold text-center text-gray-100 mb-12">Meus Projetos</h1>
     
-    <% if (dados.projetos && dados.projetos.length > 0) { %>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <% dados.projetos.forEach(projeto => { %>
-                <div class="bg-slate-800 rounded-xl shadow-xl overflow-hidden hover:shadow-indigo-500/40 transition-shadow duration-300 flex flex-col">
-                    <img src="<%= projeto.imagemUrl %>" alt="Imagem do Projeto <%= projeto.nome %>" class="w-full h-56 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h2 class="text-2xl font-semibold text-sky-400 mb-3"><%= projeto.nome %></h2>
-                        <p class="text-gray-300 text-sm mb-3 flex-grow"><%= projeto.descricao %></p>
-                        
-                        <div class="mb-4">
-                            <h4 class="text-sm font-semibold text-gray-200 mb-1">Tecnologias:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <% projeto.tecnologiasUtilizadas.forEach(tec => { %>
-                                    <span class="bg-sky-700 bg-opacity-40 text-sky-300 text-xs font-semibold px-2.5 py-0.5 rounded-full"><%= tec %></span>
-                                <% }) %>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-auto pt-4 border-t border-gray-700">
-                            <a href="/projetos/<%= projeto.id %>" class="inline-block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 mb-2">
-                                Ver Detalhes
-                            </a>
-                            <% if (projeto.linkRepositorio && projeto.linkRepositorio !== '#') { %>
-                                <a href="<%= projeto.linkRepositorio %>" target="_blank" rel="noopener noreferrer" class="inline-block w-full text-center bg-slate-600 hover:bg-slate-500 text-white font-medium py-2 px-4 rounded-md transition duration-300">
-                                    Repositório no GitHub
-                                </a>
-                            <% } %>
-                            <% if (projeto.linkDemo && projeto.linkDemo !== '#') { %>
-                                <a href="<%= projeto.linkDemo %>" target="_blank" rel="noopener noreferrer" class="inline-block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 mt-2">
-                                    Ver Demo
-                                </a>
-                            <% } %>
-                        </div>
-                    </div>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section id="todos-projetos">
+    <h1 class="text-4xl font-bold text-center text-black mb-14">Meus Projetos</h1>
+
+    <div class="max-w-4xl mx-auto bg-[#1e293b] rounded-2xl shadow-xl shadow-indigo-600/20 overflow-hidden transition-shadow duration-300">
+
+        <!-- Swiper -->
+        <div class="swiper h-50 md:h-50">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/projetos/home.png" alt="Projeto imagem 1" class="w-full h-full object-cover" />
                 </div>
-            <% }) %>
+                <div class="swiper-slide">
+                    <img src="/images/projetos/emp_page.png" alt="Projeto imagem 2" class="w-full h-full object-cover" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/projetos/stripe_page.png" alt="Projeto imagem 3" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <div class="swiper-pagination !bottom-2"></div>
+            <div class="swiper-button-prev text-sky-400"></div>
+            <div class="swiper-button-next text-sky-400"></div>
         </div>
-    <% } else { %>
-        <p class="text-center text-gray-400 text-lg">Nenhum projeto cadastrado no momento. Volte em breve!</p>
-    <% } %>
+
+        <!-- Conteúdo do Projeto -->
+        <div class="p-6 md:p-8">
+            <h2 class="text-2xl font-semibold text-sky-400 mb-3">Projeto API 2 - Fatec SJC</h2>
+            <p class="text-gray-300 text-sm mb-4">
+                A aplicação tem como objetivo fornecer uma plataforma digital intuitiva, acessível e moderna para divulgar e valorizar as empresas patrocinadoras do programa da Helpnei, destacando de maneira clara e visualmente impactante o impacto positivo dos seus investimentos no fortalecimento do empreendedorismo local.            </p>
+            <div class="mb-5">
+                <h4 class="text-sm font-semibold text-gray-200 mb-1">Tecnologias:</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">TYPESCRIPT</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">FIGMA</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">HTML5</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">REACT</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">GITHUB</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">GOOGLE MAPS</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">SUPABASE</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">VITE</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">TAILWIND</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">VERCEL</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">RECHARTS</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">TOASTFY</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">YUP</span>
+                    <span class="bg-sky-700/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">STRIPE</span>
+                </div>
+            </div>
+            <a href="https://github.com/matheuskarnas/API-2" target="_blank" rel="noopener noreferrer"
+                class="block w-full text-center bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                Repositório no GitHub
+            </a>
+        </div>
+    </div>
 </section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
 
 <%- include('partials/footer', { dados: dados }) %>
