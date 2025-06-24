@@ -19,7 +19,7 @@ const db = mysql.createConnection({
     user: 'pedro',
     password: 'pedro',
     database: 'pedro_port',
-    multipleStatements: true // <-- ADICIONE ESTA LINHA
+    multipleStatements: true 
 
 });
 
@@ -31,14 +31,13 @@ db.connect(err => {
     console.log('Conectado ao MySQL com sucesso!');
 });
 
-// Middleware para carregar dados comuns a todas as páginas
 const carregarDadosGerais = (req, res, next) => {
     db.query('SELECT * FROM informacoes WHERE id = 1', (err, results) => {
         if (err) return next(err);
         if (results.length > 0) {
             res.locals.dadosGerais = results[0];
         } else {
-            res.locals.dadosGerais = {}; // Garante que não quebre se a tabela estiver vazia
+            res.locals.dadosGerais = {}; 
         }
         next();
     });
@@ -249,9 +248,7 @@ app.delete('/api/projetos/:id', (req, res) => {
     });
 });
 
-// Adicione aqui as rotas de API para HABILIDADES e EXPERIÊNCIAS seguindo o mesmo padrão dos projetos.
 
-// Iniciar Servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
