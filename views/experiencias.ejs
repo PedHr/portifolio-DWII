@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<section id="experiencias" class="my-5">
+    <h2 class="text-center mb-4">Minhas Experiências</h2>
+
+    <div class="card mb-5 custom-card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Adicionar Nova Experiência</h3>
+            <form action="/experiencias" method="POST">
+                <div class="mb-3">
+                    <label for="cargo" class="form-label">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" name="cargo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="empresa" class="form-label">Empresa</label>
+                    <input type="text" class="form-control" id="empresa" name="empresa" required>
+                </div>
+                 <div class="mb-3">
+                    <label for="periodo" class="form-label">Período</label>
+                    <input type="text" class="form-control" id="periodo" name="periodo" placeholder="Ex: Janeiro, 2023 - Presente" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição das Atividades</label>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Experiência</button>
+            </form>
+        </div>
+    </div>
+
+    <h3 class="mb-3

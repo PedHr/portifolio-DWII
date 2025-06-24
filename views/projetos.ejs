@@ -1,29 +1,43 @@
-<%- include('partials/header', { pageTitle: pageTitle, dados: dados }) %>
+<%- include('partials/header') %>
 
-<section>
-    <div class="container mx-auto max-w-3xl px-4">
-        <h2 class="text-3xl font-bold mb-6">Cadastrar Projetos</h2>
-        <form action="/projetos" method="POST" class="bg-slate-800 p-4 rounded mb-6">
-            <input type="text" name="nome" placeholder="Nome do projeto" required class="w-full p-2 mb-3 rounded text-black">
-            <textarea name="descricao" placeholder="Descrição do projeto" required class="w-full p-2 mb-3 rounded text-black"></textarea>
-            <button class="bg-blue-600 px-4 py-2 rounded text-white">Cadastrar</button>
-        </form>
-        <br><br>
-        <h1 class="text-3xl font-bold mb-6">Meus Projetos</h1>
+<section id="projetos" class="my-5">
+    <h2 class="text-center mb-4">Meus Projetos</h2>
 
-        <ul class="space-y-4">
-            <% projetos.forEach(p => { %>
-                <li class="bg-slate-800 p-4 rounded shadow">
-                    <h2 class="text-xl font-semibold"><%= p.nome %></h2>
-                    <p class="mb-2"><%= p.descricao %></p>
-                    <form action="/projetos/<%= p.id %>/delete" method="POST" class="inline">
-                        <button class="text-red-400 hover:underline">Excluir</button>
-                    </form>
-                    <a href="/projetos/<%= p.id %>/edit" class="ml-4 text-blue-400 hover:underline">Editar</a>
-                </li>
-            <% }) %>
-        </ul>
+    <div class="card mb-5 custom-card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Adicionar Novo Projeto</h3>
+            <form action="/projetos" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome do Projeto</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Projeto</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <% projetos.forEach(projeto => { %>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 custom-card card-hover">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= projeto.nome %></h5>
+                        <p class="card-text"><%= projeto.descricao %></p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="/projetos/<%= projeto.id %>/edit" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <form action="/projetos/<%= projeto.id %>/delete" method="POST" class="d-inline ms-1">
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir este projeto?');">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
     </div>
 </section>
 
-<%- include('partials/footer', { dados: dados }) %>
+<%- include('partials/footer') %>

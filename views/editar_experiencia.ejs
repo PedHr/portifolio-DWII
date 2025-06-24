@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<section id="editar-experiencia" class="my-5">
+    <h2 class="text-center mb-4">Editar Experiência</h2>
+
+    <div class="card custom-card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <form action="/experiencias/<%= experiencia.id %>/edit" method="POST">
+                <div class="mb-3">
+                    <label for="cargo" class="form-label">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" name="cargo" value="<%= experiencia.cargo %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="empresa" class="form-label">Empresa</label>
+                    <input type="text" class="form-control" id="empresa" name="empresa" value="<%= experiencia.empresa %>" required>
+                </div>
+                 <div class="mb-3">
+                    <label for="periodo" class="form-label">Período</label>
+                    <input type="text" class="form-control" id="periodo" name="periodo" value="<%= experiencia.periodo %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="3" required><%= experiencia.descricao %></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <a href="/experiencias" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<section id="editar-habilidade" class="my-5">
+    <h2 class="text-center mb-4">Editar Habilidade</h2>
+
+    <div class="card custom-card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <form action="/habilidades/<%= habilidade.id %>/edit" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome da Habilidade</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<%= habilidade.nome %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="percentual" class="form-label">Nível de Proficiência (%)</label>
+                    <input type="number" class="form-control" id="percentual" name="percentual" min="0" max="100" value="<%= habilidade.percentual %>" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <a href="/habilidades" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
